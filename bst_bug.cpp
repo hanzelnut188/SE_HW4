@@ -1,10 +1,11 @@
 
 //Binary Search Tree Program
-#include "stdafx.h"
+// stdafx.h
+#include <iostream>
+#include <cstdlib>
 #include <iostream>
 #include <cstdlib>
 using namespace std;
-
 class BinarySearchTree
 {
 private:
@@ -12,7 +13,7 @@ private:
 	{
 		tree_node* left;
 		tree_node* right;
-		int data; // Missing Semicolon
+		int data;
 	};
 	tree_node* root;
 public:
@@ -33,7 +34,7 @@ public:
 
 // Smaller elements go left
 // larger elements go right
-void BinarySearchTree::insert(int d) // Typo: viod
+void BinarySearchTree::insert(int d)
 {
 	tree_node* t = new tree_node;
 	tree_node* parent;
@@ -79,7 +80,7 @@ void BinarySearchTree::remove(int d)//add :
 	{
 		if (curr->data == d)
 		{
-			found = true; // Missing semicolon
+			found = true; //added semicolon
 			break;
 		}
 		else
@@ -102,10 +103,10 @@ void BinarySearchTree::remove(int d)//add :
 	// 3. we're removing a node with 2 children
 
 	// Node with single child
-	if ((curr->left == NULL && curr->right != NULL) || (curr->left != NULL // single & it should be &&
+	if ((curr->left == NULL & curr->right != NULL) || (curr->left != NULL
 		&& curr->right == NULL))
 	{
-		if (curr->left == NULL && curr->right != NULL) // Assignment used instead of comparison
+		if (curr->left == NULL && curr->right != NULL) // 
 		{
 			if (parent->left == curr)
 			{
@@ -115,7 +116,7 @@ void BinarySearchTree::remove(int d)//add :
 			else
 			{
 				parent->right = curr->right;
-				delete curr; //it should be curr;
+				delete curr; // typo cur
 			}
 		}
 		else // left child present, no right child
@@ -137,7 +138,7 @@ void BinarySearchTree::remove(int d)//add :
 	//We're looking at a leaf node
 	if (curr->left == NULL && curr->right == NULL)
 	{
-		if (parent->left == curr) parent->left = NULL; // Incorrect closing brace placement
+		if (parent->left == curr) parent->left = NULL;// }
 		else parent->right = NULL;
 		delete curr;
 		return;
@@ -149,7 +150,7 @@ void BinarySearchTree::remove(int d)//add :
 	if (curr->left != NULL && curr->right != NULL)
 	{
 		tree_node* chkr;
-		chkr = curr->right; // it was ckhr
+		chkr = curr->right;// ckhr -> chkr (typo)
 		if ((chkr->left == NULL) && (chkr->right == NULL))
 		{
 			curr = chkr;
@@ -284,7 +285,7 @@ int main()
 			break;
 		case 6: system("pause");
 			return 0;
-			break; //hello!!!!
+			break; //h
 		}
 	}
 }
