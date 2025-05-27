@@ -137,7 +137,7 @@ void BinarySearchTree:remove(int d)
 	//We're looking at a leaf node
 	if (curr->left == NULL && curr->right == NULL)
 	{
-		if (parent->left == curr) parent->left = NULL;}
+		if (parent->left == curr) parent->left = NULL; // Incorrect closing brace placement
 		else parent->right = NULL;
 		delete curr;
 		return;
