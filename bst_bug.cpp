@@ -1,7 +1,6 @@
 
 //Binary Search Tree Program
 // stdafx.h
-#pragma once
 
 #include <iostream>
 #include <cstdlib>
@@ -17,7 +16,7 @@ private:
 	{
 		tree_node* left;
 		tree_node* right;
-		int data
+		int data;
 	};
 	tree_node* root;
 public:
@@ -34,15 +33,15 @@ public:
 	void postorder(tree_node*);
 	void insert(int);
 	void remove(int);
-}
+};
 
 // Smaller elements go left
 // larger elements go right
-viod BinarySearchTree::insert(int d)
+void BinarySearchTree::insert(int d)
 {
 	tree_node* t = new tree_node;
 	tree_node* parent;
-	t.data = d;
+	t->data = d;
 	t->left = NULL;
 	t->right = NULL;
 	parent = NULL;
@@ -57,8 +56,8 @@ viod BinarySearchTree::insert(int d)
 		while (curr)
 		{
 			parent = curr;
-			if (t->data < curr->data) curr = curr->right;
-			else curr = curr->left;
+			if (t->data < curr->data) curr = curr->left;// Go left for smaller elements
+			else curr = curr->right; // Go right for larger elements
 		}
 
 		if (t->data < parent->data)
@@ -68,13 +67,13 @@ viod BinarySearchTree::insert(int d)
 	}
 }
 
-void BinarySearchTree:remove(int d)
+void BinarySearchTree::remove(int d)//add :
 {
 	//Locate the element
 	int found = false;
 	if (isEmpty())
 	{
-		cout << " This Tree is empty! " << endl;
+		std::cout << " This Tree is empty! " << endl;//ambiguous
 		return;
 	}
 	tree_node* curr;
@@ -84,7 +83,7 @@ void BinarySearchTree:remove(int d)
 	{
 		if (curr->data == d)
 		{
-			found = true
+			found = true; //added semicolon
 			break;
 		}
 		else
@@ -96,7 +95,7 @@ void BinarySearchTree:remove(int d)
 	}
 	if (!found)
 	{
-		cout << " Data found! " << endl;
+		std::cout << " Data found! " << endl; //added std ambiguous
 		return;
 	}
 
@@ -110,7 +109,7 @@ void BinarySearchTree:remove(int d)
 	if ((curr->left == NULL & curr->right != NULL) || (curr->left != NULL
 		&& curr->right == NULL))
 	{
-		if (curr->left = NULL && curr->right != NULL)
+		if (curr->left == NULL && curr->right != NULL) // =
 		{
 			if (parent->left == curr)
 			{
@@ -120,7 +119,7 @@ void BinarySearchTree:remove(int d)
 			else
 			{
 				parent->right = curr->right;
-				delete cur;
+				delete curr; // typo cur
 			}
 		}
 		else // left child present, no right child
@@ -133,7 +132,7 @@ void BinarySearchTree:remove(int d)
 			else
 			{
 				parent->right = curr->left;
-				delete curr
+				delete curr;
 			}
 		}
 		return;
@@ -142,7 +141,7 @@ void BinarySearchTree:remove(int d)
 	//We're looking at a leaf node
 	if (curr->left == NULL && curr->right == NULL)
 	{
-		if (parent->left == curr) parent->left = NULL;}
+		if (parent->left == curr) parent->left = NULL;// }
 		else parent->right = NULL;
 		delete curr;
 		return;
@@ -154,7 +153,7 @@ void BinarySearchTree:remove(int d)
 	if (curr->left != NULL && curr->right != NULL)
 	{
 		tree_node* chkr;
-		ckhr = curr->right;
+		chkr = curr->right;// ckhr -> chkr (typo)
 		if ((chkr->left == NULL) && (chkr->right == NULL))
 		{
 			curr = chkr;
@@ -166,7 +165,7 @@ void BinarySearchTree:remove(int d)
 			//if the node's right child has a left child
 			// Move all the way down left to locate smallest element
 
-			if (curr->right)->left != NULL)
+			if ((curr->right)->left != NULL) // missing (
 			{
 				tree_node* lcurr;
 				tree_node* lcurrp;
@@ -174,7 +173,7 @@ void BinarySearchTree:remove(int d)
 				lcurr = (curr->right)->left;
 				while (lcurr->left != NULL)
 				{
-					lcurrp = lcurr
+					lcurrp = lcurr;//missing semicolon
 					lcurr = lcurr->left;
 				}
 				curr->data = lcurr->data;
@@ -185,7 +184,7 @@ void BinarySearchTree:remove(int d)
 			{
 				tree_node* tmp;
 				tmp = curr->right;
-				curr->data = tmp->data
+				curr->data = tmp->data;//missing semicolon
 				curr->right = tmp->right;
 				delete tmp;
 			}
@@ -214,7 +213,7 @@ void BinarySearchTree::inorder(tree_node* p)
 
 void BinarySearchTree::print_preorder()
 {
-	preorder(rooot);
+	preorder(root);//typo
 }
 
 void BinarySearchTree::preorder(tree_node* p)
@@ -265,7 +264,7 @@ int main()
 		{
 		case 1: cout << " Enter Number to be inserted : ";
 			cin >> tmp;
-			b.inssert(tmp);
+			b.insert(tmp);//typo inssert
 			break;
 		case 2: cout << endl;
 			cout << " In-Order Traversal " << endl;
