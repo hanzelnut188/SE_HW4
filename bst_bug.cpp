@@ -149,7 +149,7 @@ void BinarySearchTree:remove(int d)
 	if (curr->left != NULL && curr->right != NULL)
 	{
 		tree_node* chkr;
-		ckhr = curr->right;
+		chkr = curr->right; // it was ckhr
 		if ((chkr->left == NULL) && (chkr->right == NULL))
 		{
 			curr = chkr;
