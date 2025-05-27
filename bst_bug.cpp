@@ -29,7 +29,7 @@ public:
 	void postorder(tree_node*);
 	void insert(int);
 	void remove(int);
-}
+};
 
 // Smaller elements go left
 // larger elements go right
@@ -37,7 +37,7 @@ void BinarySearchTree::insert(int d) // Typo: viod
 {
 	tree_node* t = new tree_node;
 	tree_node* parent;
-	t.data = d;
+	t->data = d;
 	t->left = NULL;
 	t->right = NULL;
 	parent = NULL;
@@ -52,8 +52,8 @@ void BinarySearchTree::insert(int d) // Typo: viod
 		while (curr)
 		{
 			parent = curr;
-			if (t->data < curr->data) curr = curr->right;
-			else curr = curr->left;
+			if (t->data < curr->data) curr = curr->left;// Go left for smaller elements
+			else curr = curr->right; // Go right for larger elements
 		}
 
 		if (t->data < parent->data)
@@ -63,13 +63,13 @@ void BinarySearchTree::insert(int d) // Typo: viod
 	}
 }
 
-void BinarySearchTree:remove(int d)
+void BinarySearchTree::remove(int d)//add :
 {
 	//Locate the element
 	int found = false;
 	if (isEmpty())
 	{
-		cout << " This Tree is empty! " << endl;
+		std::cout << " This Tree is empty! " << endl;//ambiguous
 		return;
 	}
 	tree_node* curr;
@@ -128,7 +128,7 @@ void BinarySearchTree:remove(int d)
 			else
 			{
 				parent->right = curr->left;
-				delete curr
+				delete curr;
 			}
 		}
 		return;
@@ -161,7 +161,7 @@ void BinarySearchTree:remove(int d)
 			//if the node's right child has a left child
 			// Move all the way down left to locate smallest element
 
-			if (curr->right)->left != NULL)
+			if ((curr->right)->left != NULL) // missing (
 			{
 				tree_node* lcurr;
 				tree_node* lcurrp;
@@ -169,7 +169,7 @@ void BinarySearchTree:remove(int d)
 				lcurr = (curr->right)->left;
 				while (lcurr->left != NULL)
 				{
-					lcurrp = lcurr
+					lcurrp = lcurr;//missing semicolon
 					lcurr = lcurr->left;
 				}
 				curr->data = lcurr->data;
@@ -180,7 +180,7 @@ void BinarySearchTree:remove(int d)
 			{
 				tree_node* tmp;
 				tmp = curr->right;
-				curr->data = tmp->data
+				curr->data = tmp->data;//missing semicolon
 				curr->right = tmp->right;
 				delete tmp;
 			}
@@ -209,7 +209,7 @@ void BinarySearchTree::inorder(tree_node* p)
 
 void BinarySearchTree::print_preorder()
 {
-	preorder(rooot);
+	preorder(root);//typo
 }
 
 void BinarySearchTree::preorder(tree_node* p)
@@ -260,7 +260,7 @@ int main()
 		{
 		case 1: cout << " Enter Number to be inserted : ";
 			cin >> tmp;
-			b.inssert(tmp);
+			b.insert(tmp);//typo inssert
 			break;
 		case 2: cout << endl;
 			cout << " In-Order Traversal " << endl;
@@ -279,11 +279,11 @@ int main()
 			break;
 		case 5: cout << " Enter data to be deleted : ";
 			cin >> tmp1;
-			b.remove(ch);
+			b.remove(tmp1); // changed data handling
 			break;
 		case 6: system("pause");
 			return 0;
-			break;
+			break; //hello!!!!
 		}
 	}
 }
