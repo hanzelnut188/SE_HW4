@@ -1,11 +1,6 @@
 
 //Binary Search Tree Program
-// stdafx.h
-#pragma once
-
-#include <iostream>
-#include <cstdlib>
-
+#include "stdafx.h"
 #include <iostream>
 #include <cstdlib>
 using namespace std;
@@ -17,7 +12,7 @@ private:
 	{
 		tree_node* left;
 		tree_node* right;
-		int data
+		int data; // Missing Semicolon
 	};
 	tree_node* root;
 public:
@@ -25,7 +20,7 @@ public:
 	{
 		root = NULL;
 	}
-	bool isEmpty() const { return root == NULL; }
+	bool isEmpty() const { return root == NULL;}
 	void print_inorder();
 	void inorder(tree_node*);
 	void print_preorder();
@@ -38,7 +33,7 @@ public:
 
 // Smaller elements go left
 // larger elements go right
-viod BinarySearchTree::insert(int d)
+void BinarySearchTree::insert(int d) // Typo: viod
 {
 	tree_node* t = new tree_node;
 	tree_node* parent;
@@ -84,7 +79,7 @@ void BinarySearchTree:remove(int d)
 	{
 		if (curr->data == d)
 		{
-			found = true
+			found = true; // Missing semicolon
 			break;
 		}
 		else
@@ -96,7 +91,7 @@ void BinarySearchTree:remove(int d)
 	}
 	if (!found)
 	{
-		cout << " Data found! " << endl;
+		cout << " Data not found! " << endl; // It was "Data Found!""
 		return;
 	}
 
@@ -107,10 +102,10 @@ void BinarySearchTree:remove(int d)
 	// 3. we're removing a node with 2 children
 
 	// Node with single child
-	if ((curr->left == NULL & curr->right != NULL) || (curr->left != NULL
+	if ((curr->left == NULL && curr->right != NULL) || (curr->left != NULL // single & it should be &&
 		&& curr->right == NULL))
 	{
-		if (curr->left = NULL && curr->right != NULL)
+		if (curr->left == NULL && curr->right != NULL) // Assignment used instead of comparison
 		{
 			if (parent->left == curr)
 			{
@@ -120,7 +115,7 @@ void BinarySearchTree:remove(int d)
 			else
 			{
 				parent->right = curr->right;
-				delete cur;
+				delete curr; //it should be curr;
 			}
 		}
 		else // left child present, no right child
