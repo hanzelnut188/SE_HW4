@@ -1,13 +1,11 @@
 
 //Binary Search Tree Program
 // stdafx.h
-
 #include <iostream>
 #include <cstdlib>
 #include <iostream>
 #include <cstdlib>
 using namespace std;
-
 class BinarySearchTree
 {
 private:
@@ -286,7 +284,7 @@ int main()
 			break;
 		case 6: system("pause");
 			return 0;
-			break; //hello!!!!
+			break; //h
 		}
 	}
 }
