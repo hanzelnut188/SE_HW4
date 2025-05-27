@@ -4,7 +4,6 @@
 
 #include <iostream>
 #include <cstdlib>
-
 #include <iostream>
 #include <cstdlib>
 using namespace std;
@@ -283,11 +282,11 @@ int main()
 			break;
 		case 5: cout << " Enter data to be deleted : ";
 			cin >> tmp1;
-			b.remove(ch);
+			b.remove(tmp1); // changed data handling
 			break;
 		case 6: system("pause");
 			return 0;
-			break;
+			break; //hello!!!!
 		}
 	}
 }
