@@ -20,7 +20,7 @@ public:
 	{
 		root = NULL;
 	}
-	bool isEmpty() const { return root == NULL;}
+	bool isEmpty() const { return root == NULL;};// Missing Semicolon
 	void print_inorder();
 	void inorder(tree_node*);
 	void print_preorder();
@@ -91,7 +91,7 @@ void BinarySearchTree::remove(int d)//add :
 	}
 	if (!found)
 	{
-		cout << " Data not found! " << endl; // It was "Data Found!""
+		cout << " Data not found! " << endl; // It was "Data Found!"
 		return;
 	}
 
@@ -173,8 +173,9 @@ void BinarySearchTree::remove(int d)//add :
 					lcurr = lcurr->left;
 				}
 				curr->data = lcurr->data;
-				delete lcurr;
+				// delete lcurr; // it should not be here
 				lcurrp->left = NULL;
+				delete lcurr; // Correct here
 			}
 			else
 			{
@@ -193,7 +194,7 @@ void BinarySearchTree::remove(int d)//add :
 
 void BinarySearchTree::print_inorder()
 {
-	inorder(root);;
+	inorder(root); // Double semicolon
 }
 
 void BinarySearchTree::inorder(tree_node* p)
@@ -217,7 +218,7 @@ void BinarySearchTree::preorder(tree_node* p)
 	if (p != NULL)
 	{
 		cout << " " << p->data << " ";
-		if (p->left) {} preorder(p->left);
+		if (p->left) preorder(p->left); // There was empty braces
 		if (p->right) preorder(p->right);
 	}
 	else return;
@@ -230,7 +231,7 @@ void BinarySearchTree::print_postorder()
 
 void BinarySearchTree::postorder(tree_node* p)
 {
-	if (p = NULL)
+	if (p == NULL) //should be p==NULL
 	{
 		if (p->left) postorder(p->left);
 		if (p->right) postorder(p->right);
